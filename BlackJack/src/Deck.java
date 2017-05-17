@@ -1,4 +1,5 @@
-
+import java.util.*;
+import Card;
 public class Deck {
 	
 	private ArrayList<Card> deck;
@@ -16,17 +17,17 @@ public class Deck {
 	}
 	
 	public void shuffle() {
-		for (int k = cards.size() - 1; k > 0; k--) {
+		for (int k = deck.size() - 1; k > 0; k--) {
 			int position = (int) (Math.random() * (k + 1));
-			Card temp = cards.get(k);
-			cards.set(k, cards.get(position));
-			cards.set(position, temp);
+			Card temp = deck.get(k);
+			deck.set(k, deck.get(position));
+			deck.set(position, temp);
 		}
-		size = cards.size();
+		size = deck.size();
 	}
 	
 	
-	
+	//draws card from deck 
 	public Card removeCard() {
 		return deck.remove(0);
 	}
