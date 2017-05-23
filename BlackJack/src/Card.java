@@ -1,4 +1,5 @@
 public class Card {
+	
 	private String suit;
 	private String rank;
 	private int value;
@@ -31,3 +32,4 @@ public class Card {
 		return rank + " of " + suit + " (point value = " + value + ")";	
 	}
 }
+	
