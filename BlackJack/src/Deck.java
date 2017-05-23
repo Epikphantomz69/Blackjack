@@ -1,35 +1,38 @@
 import java.util.*;
-import Card;
 public class Deck {
 	
-	private ArrayList<Card> deck;
-	private int size;
+	private ArrayList<Card> cards = new ArrayList<Card>();
 	
 	public Deck() {
-	    deck = new ArrayList<Card>();
-	    for(int i = 0; i < 4; i++) {
-	        for(int j = 1; j <= 13; j++) {
-	            deck.add(new Card(i,j));
-	        }
-	    }
-	    size = cards.size;
+		String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+		int[] values = {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
+		String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+		for(int i = 0; i < ranks.length; i++) {
+			for(int j = 0; j < suits.length; j++)  {
+				cards.add(new Card(ranks[i], suits[j], values[i]));
+			}
+		}
 	    shuffle();
 	}
 	
 	public void shuffle() {
-		for (int k = deck.size() - 1; k > 0; k--) {
+		for (int k = cards.size() - 1; k > 0; k--) {
 			int position = (int) (Math.random() * (k + 1));
-			Card temp = deck.get(k);
-			deck.set(k, deck.get(position));
-			deck.set(position, temp);
+			Card temp = cards.get(k);
+			cards.set(k, cards.get(position));
+			cards.set(position, temp);
 		}
-		size = deck.size();
 	}
 	
+	public ArrayList<Card> getList(){
+		return cards;
+	}
 	
-	//draws card from deck 
+	//Removes card from top of ArrayList and returns it	
 	public Card removeCard() {
-		return deck.remove(0);
-	}
+		Card temp = cards.get(cards.size() - 1);
+		cards.remove(cards.size() - 1);
+		return temp;
+	}	
 
 }
